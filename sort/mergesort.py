@@ -1,11 +1,11 @@
 import numpy as np
 
 
-class MergeSorting():
+class MergeSort():
     def _to_np_array(self, alist):
         return np.array(alist, dtype=np.uint32)
 
-    def merge(self, array):
+    def divide(self, array):
         array = self._to_np_array(array)
 
         if len(array) == 0:
@@ -18,8 +18,15 @@ class MergeSorting():
             left_half = array[:middle]
             right_half = array[middle:]
 
-            print "Left Half: " + np.array2string(left_half)
-            print "Right Half: " + np.array2string(right_half)
-
             self.merge(left_half)
             self.merge(right_half)
+
+    def merge(self, left_array, right_array):
+        result_array = np.array([])
+        count_left, count_right = 0, 0
+
+        while (count_left < len(left_array) and count_right < len(right_array)):
+            if left_array[count_left] > right_array[count_right]:
+                result_array.append
+            count_left += 1
+            count_right += 1
