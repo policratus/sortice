@@ -1,13 +1,6 @@
-import numpy as np
-
-
 class MergeSort():
-    def _to_np_array(self, alist):
-        return np.array(alist, dtype=np.uint32)
-
-    def divide(self, array):
-        array = self._to_np_array(array)
-
+    def run(self, array):
+        # Base Cases
         if len(array) == 0:
             print "Input array is empty"
         elif len(array) == 1:
@@ -18,15 +11,36 @@ class MergeSort():
             left_half = array[:middle]
             right_half = array[middle:]
 
-            self.merge(left_half)
-            self.merge(right_half)
+            # Two recursive calls to split
+            # This denotes a recurrence of
+            # T(n) = 2*T(n/2) + n
+            # Using the second case of
+            # master method
+            self.run(left_half)
+            self.run(right_half)
 
-    def merge(self, left_array, right_array):
-        result_array = np.array([])
-        count_left, count_right = 0, 0
+            count_left, count_right, count_result = 0, 0, 0
 
-        while (count_left < len(left_array) and count_right < len(right_array)):
-            if left_array[count_left] > right_array[count_right]:
-                result_array.append
-            count_left += 1
-            count_right += 1
+            # Merging
+            while (count_left < len(left_half)
+                   and count_right < len(right_half)):
+                if left_half[count_left] < right_half[count_right]:
+                    array[count_result] = left_half[count_left]
+                    count_left += 1
+                else:
+                    array[count_result] = right_half[count_right]
+                    count_right += 1
+
+                count_result += 1
+
+            while (count_left < len(left_half)):
+                array[count_result] = left_half[count_left]
+                count_left += 1
+                count_result += 1
+
+            while (count_right < len(right_half)):
+                array[count_result] = right_half[count_right]
+                count_right += 1
+                count_result += 1
+
+            return array
