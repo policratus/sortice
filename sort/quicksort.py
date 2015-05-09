@@ -1,29 +1,29 @@
-from utils import rnd, arr
+from utils import arr
 
 
 class QuickSort():
     def __init__(self):
         self._array_utils = arr.ArrayUtils()
 
-    def _pivot(self, array):
-        # Using median of three method to
-        # avoid the chance of choosing a pivot
-        # that leads the algorithm to an O(n^2)
-        pivot_seeder = rnd.Seeder(len(array), 3)
+    # def _pivot(self, array):
+    #    # Using median of three method to
+    #    # avoid the chance of choosing a pivot
+    #    # that leads the algorithm to an O(n^2)
+    #    pivot_seeder = rnd.Seeder(len(array), 3)
 
-        pivot_index = pivot_seeder.random_array()
+    #    pivot_index = pivot_seeder.random_array()
 
-        # Ok, sorry. I used a native Python sort
-        # algorithm to find the median.
-        pivot_index.sort()
+    #    # Ok, sorry. I used a native Python sort
+    #    # algorithm to find the median.
+    #    pivot_index.sort()
 
-        return pivot_index[len(pivot_index)//2]
+    #    return pivot_index[len(pivot_index)//2]
 
     def quick(self, array, left, right):
         if len(array) == 1:
             return array
         elif len(array) > 1:
-            pivot = self._pivot(array)
+            pivot = right
 
             while left < right:
                 while array[left] < array[pivot]:
