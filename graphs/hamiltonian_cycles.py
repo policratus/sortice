@@ -1,11 +1,9 @@
-from time import sleep
 graph = [[1,2,6,7],[0,2,7],[0,1,3],[2,4],[3,5],[4,6],[0,5,7],[0,1,6]]
 
 solution = []
 visited = []
 
-for i in xrange(0, len(graph)):
-    visited.append(False)
+visited = visited + [False]*len(graph)
 
 start = 7
 visited[start] = True
